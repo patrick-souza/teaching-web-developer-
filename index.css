@@ -6,7 +6,7 @@ body {
   margin: 0px;
 }
 a {
-  color: hsla(0, 0%, 100%, 0.5);
+  color: rgba(200,200,200, 0.9);
   text-decoration: none;
 }
 
@@ -16,16 +16,23 @@ a {
   background-color: #222;
   padding: 10em 2em;
   justify-content: space-between;
-  color: hsla(0, 0%, 100%, 0.5);
+
   position: fixed;
   top: 0px;
   bottom: 0px;
   width: 350px;
+  box-shadow: 2px 4px 8px rgba(40, 40, 40, 0.75);
+
+  background-image: url("images/left-bar.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .box-image {
   display: flex;
   justify-content: flex-end;
   height: fit-content;
+ 
 }
 
 .box-image img {
@@ -33,12 +40,14 @@ a {
   object-fit: cover;
   width: 100px;
   height: 100px;
+  box-shadow: 0px 0px 8px rgba(210, 210, 210, 0.75);
 }
 
 .box-text p {
-  font-size: 20px;
   text-align: right;
-  font-weight: 400;
+  color: rgba(200,200,200, 0.9);
+  font-size: 28px;
+  font-weight: 600;
 }
 
 .box-social-medias {
@@ -85,7 +94,7 @@ a {
   max-width: 65%;
   margin-left: 35%;
   padding: 8em 4em 4em;
-  color: hsla(255, 100%, 0%, 0.5);
+  color: rgba(40, 40, 40, 0.5);
 }
 
 .about-content {
@@ -106,14 +115,14 @@ a {
   border: 1px solid #545454;
   border-radius: 6px;
   background-color: transparent;
-  color: hsla(255, 100%, 0%, 0.5);
+  color: rgba(40, 40, 40, 0.5);
   cursor: pointer;
 }
 
 .button:hover {
   border-color: rgba(200, 200, 200, 0.8);
-  color: hsla(0, 0%, 100%, 0.5);
-  background-color: hsla(255, 100%, 0%, 0.5);
+  color: rgba(200,200,200, 0.9);
+  background-color: rgba(40, 40, 40, 0.5);
   transition: 0.3s;
 }
 
@@ -184,7 +193,7 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  color: hsla(255, 100%, 0%, 0.5);
+  color: rgba(40, 40, 40, 0.5);
 }
 
 .form-group {
@@ -202,9 +211,8 @@ a {
 .form-group textarea {
   border: 1px solid rgba(40, 40, 40, 0.5);
   border-radius: 3px;
-
   padding: 4px;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .form-group input {
