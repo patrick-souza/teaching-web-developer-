@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="index.css" />
   <script src="https://kit.fontawesome.com/8075a56a5a.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <nav class="left-bar">
     <div>
@@ -40,13 +41,14 @@
         <a href="#"><i class="far fa-copyright"></i> Patrick Souza</a>
       </div>
     </section>
-    </nav>
+  </nav>
 
   <main class="box-content">
     <div class="about-content">
       <div>
         <p style="font-weight: 600; font-size: 20px">
-        Bem vindo ao meu novo site,<br> caso queira saber mais sobre meu trabalho
+          Bem vindo ao meu novo site,<br />
+          caso queira saber mais sobre meu trabalho
         </p>
       </div>
       <div>
@@ -59,9 +61,7 @@
           lorem neque cubilia.
         </p>
       </div>
-      <a href="#" class="button">
-        Leia mais
-      </a>
+      <a href="#" class="button"> Leia mais </a>
     </div>
     <div class="divider"></div>
     <div class="works-content">
@@ -108,9 +108,7 @@
           </div>
         </div>
       </div>
-      <a href="#" class="button">
-        Leia mais
-      </a>
+      <a href="#" class="button"> Leia mais </a>
     </div>
     <div class="divider"></div>
     <div>
@@ -132,37 +130,55 @@
               <input type="email" name="email" />
             </div>
           </div>
-          <div class="form-group" style="width: 100%;">
+          <div class="form-group" style="width: 100%">
             <label for="mensagem">Mensagem</label>
             <textarea style="padding: 4px" name="mensagem" rows="5" style="resize: none"></textarea>
           </div>
 
-          <button type="submit" class="button">
-            Enviar Mensagem
-          </button>
+          <button type="submit" class="button">Enviar Mensagem</button>
         </form>
       </div>
     </div>
+    <button onclick="buscar()">Buscar contatos</button>
   </main>
 </body>
 <script>
-  document.getElementById('my-form').onsubmit = onSubmit;
-
-  function onSubmit(event) {
+    const form = document.getElementById("my-form");
+    form.addEventListener("submit", function (event) {
     event.preventDefault();
-    const payload = Array.from(event.target.elements).reduce((obj, current) => {
-      if (!current.name) {
-        return obj;
+    const items = Array.from(event.target);
+
+    const payload = items.reduce((acc, element) => {
+      if (!element.name) {
+        return acc;
       }
 
-      return {
-        ...obj,
-        [current.name]: current.value
+      acc = {
+        ...acc,
+        [element.name]: element.value
       }
+
+      return acc;
     }, {});
 
-
+    fetch("http://0.0.0.0:3000/", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(() => {
+        console.log('consegui mandar')
+      })
     console.log(payload)
+  });
+
+    function buscar() {
+      fetch("http://0.0.0.0:3000/contatos", {
+        method: "get"
+      }).then((res) => res.json()).then(console.log)
   }
 </script>
 

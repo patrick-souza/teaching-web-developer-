@@ -1,0 +1,18 @@
+document.getElementById('my-form').onsubmit = onSubmit;
+
+function onSubmit(event) {
+event.preventDefault();
+const payload = Array.from(event.target.elements).reduce((obj, current) => {
+if (!current.name) {
+return obj;
+}
+
+return {
+...obj,
+[current.name]: current.value
+}
+}, {});
+
+
+console.log(payload)
+}
